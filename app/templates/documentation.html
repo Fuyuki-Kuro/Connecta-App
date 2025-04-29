@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentação Técnica | Connecta App</title>
+  <style>
+    body { font-family: 'Montserrat Alternates', sans-serif; background: #f4f7fa; margin:0; padding:20px; color:#333; }
+    header { background:#0057d8; color:white; padding:30px; border-radius:10px; text-align:center; }
+    header img { height:50px; vertical-align:middle; margin-right:15px; }
+    header h1 { display:inline-block; font-size:2em; margin:0; vertical-align:middle; }
+    nav ul { list-style:none; padding:0; margin:20px 0; display:flex; gap:15px; }
+    nav a { color:#0057d8; text-decoration:none; font-weight:600; }
+    section { background:white; padding:25px; margin-bottom:20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+    h2 { color:#0057d8; margin-top:0; }
+    code, pre { background:#eef3f8; padding:5px; border-radius:5px; font-family:'Courier New', monospace; color:#d63384; }
+    ul { padding-left:20px; }
+    footer { text-align:center; margin-top:40px; color:#777; font-size:0.9em; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/static/img/connecta-logo-white.png" alt="Connecta Logo">
+    <h1>Documentação Técnica</h1>
+    <p>Visão geral das classes e algoritmos implementados</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#overview">Visão Geral</a></li>
+      <li><a href="#mongodbconnection">MongoDBConnection</a></li>
+      <li><a href="#passwordhasher">PasswordHasher</a></li>
+      <li><a href="#userservice">UserService</a></li>
+      <li><a href="#servicemanager">ServiceManager</a></li>
+      <li><a href="#ticketmanager">TicketManager</a></li>
+      <li><a href="#contractmanager">ContractManager</a></li>
+      <li><a href="#usage">Exemplo de Uso</a></li>
+    </ul>
+  </nav>
+
+  <section id="overview">
+    <h2>1. Visão Geral</h2>
+    <p>Este módulo centraliza a lógica de acesso a dados e serviços do Connecta App, incluindo:</p>
+    <ul>
+      <li><strong>Conexão ao MongoDB</strong> com GridFS;</li>
+      <li><strong>Hash de senhas</strong> usando <code>bcrypt</code>;</li>
+      <li><strong>Validação de CPF</strong> pelo algoritmo de módulo 11;</li>
+      <li><strong>Gerenciamento de usuários, serviços, tickets</strong> e <strong>contratos</strong>;</li>
+      <li><strong>Armazenamento de arquivos</strong> (contratos) em GridFS com hash SHA-256.</li>
+    </ul>
+  </section>
+
+  <section id="mongodbconnection">
+    <h2>2. MongoDBConnection (Singleton)</h2>
+    <p>A classe <code>MongoDBConnection</code> implementa o padrão <em>Singleton</em> para manter uma única conexão:</p>
+    <ul>
+      <li>URI obtida de <code>.env</code> (<code>MONGO_URI_NEW</code>).</li>
+      <li>Banco de dados padrão: <code>connecta</code>.</li>
+      <li>GridFS configurado para upload de arquivos em <code>db.fs</code>.</li>
+      <li>Ping ao servidor para validar a conexão.</li>
+    </ul>
+    <pre><code>db_conn = MongoDBConnection()</code></pre>
+  </section>
+
+  <section id="passwordhasher">
+    <h2>3. PasswordHasher (Hash de Senha)</h2>
+    <p>Responsável por geração e verificação de hashes usando o algoritmo <strong>bcrypt</strong>:</p>
+    <ul>
+      <li><strong>bcrypt</strong> utiliza <em>eksblowfish</em> com <em>salt</em> e custo configurável (padrão 12 rounds).</li>
+      <li>Resistente a ataques de força bruta, pois é adaptativo.</li>
+    </ul>
+    <pre><code>salt_hash = PasswordHasher.hash_password('minhaSenha!')
+PasswordHasher.check_password('minhaSenha!', salt_hash)  # True ou False</code></pre>
+  </section>
+
+  <section id="userservice">
+    <h2>4. UserService (Gerenciamento de Usuários)</h2>
+    <p>Serviços de cadastro, busca e remoção de usuários. Implementa validações:</p>
+    <ul>
+      <li><strong>CPF:</strong> algoritmo de dígitos verificadores (módulo 11).</li>
+      <li><strong>Campos únicos:</strong> <code>user.username</code>, <code>user.email</code>, <code>user.cpf</code>.</li>
+      <li><strong>Senha:</strong> armazenada apenas após hashing com <code>PasswordHasher</code>.</li>
+    </ul>
+    <pre><code>service = UserService(db_conn)
+service.add_user({'user': {...}})
+user = service.find_user('leonard_connecta')</code></pre>
+  </section>
+
+  <section id="servicemanager">
+    <h2>5. ServiceManager (Gerenciamento de Serviços)</h2>
+    <p>CRUD para o recurso <code>services</code> no MongoDB:</p>
+    <ul>
+      <li><code>insert_one</code> para criar;</li>
+      <li><code>find_one</code> para ler;</li>
+      <li><code>update_one</code> para atualizar;</li>
+      <li><code>delete_one</code> para remover.</li>
+    </ul>
+  </section>
+
+  <section id="ticketmanager">
+    <h2>6. TicketManager (Gerenciamento de Tickets)</h2>
+    <p>Inserção de tickets de suporte:</p>
+    <pre><code>ticket_mgr = TicketManager(db_conn)
+ticket_mgr.add_ticket({ 'titulo': '...', 'mensagem': '...' })</code></pre>
+  </section>
+
+  <section id="contractmanager">
+    <h2>7. ContractManager (Gerenciamento de Contratos)</h2>
+    <p>Armazenamento de contratos com validação de integridade:</p>
+    <ul>
+      <li><strong>SHA-256:</strong> gera hash único do arquivo para verificar integridade.</li>
+      <li><strong>GridFS:</strong> armazenamento do arquivo binário em <code>db.fs</code>.</li>
+      <li>Associação do contrato ao usuário via <code>$push</code> no campo <code>contracts_info</code>.</li>
+    </ul>
+    <pre><code>contract_mgr = ContractManager(db_conn)
+contract_mgr.add_contract(user_id, data, file_bytes, 'contrato.pdf')</code></pre>
+  </section>
+
+  <section id="usage">
+    <h2>8. Exemplo de Uso</h2>
+    <pre><code>from database import MongoDBConnection, UserService, ContractManager
+
+# Inicializa conexão
+connect = MongoDBConnection()
+
+# Cadastro de usuário
+user_sv = UserService(connect)
+user_sv.add_user({ 'user': { 'username': 'joao', ... } })
+
+# Upload de contrato
+cm = ContractManager(connect)
+with open('contrato.pdf','rb') as f:
+    cm.add_contract('joao', {'nome':'Contrato A', ...}, f.read(), 'contrato.pdf')
+</code></pre>
+  </section>
+
+  <footer>
+    <p>© 2025 Connecta App. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

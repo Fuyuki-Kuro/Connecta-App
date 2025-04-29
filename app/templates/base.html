@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Dashboard{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background">
+    <svg class="shape-top" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#ef1368" fill-opacity="0.1" d="M0,160L80,186.7C160,213,320,267,480,245.3C640,224,800,128,960,96C1120,64,1280,96,1360,112L1440,128V0H1360C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0H0Z" />
+    </svg>
+    <svg class="shape-bottom" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#f88ca5" fill-opacity="0.1" d="M0,480L80,426.7C160,373,320,267,480,234.7C640,203,800,245,960,261.3C1120,277,1280,267,1360,261.3L1440,256V600H1360C1280,600,1120,600,960,600C800,600,640,600,480,600C320,600,160,600,80,600H0Z" />
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <div class="logo"><img src="/static/img/logo_white.png" alt="Logo da Agência"></div>
+      <ul class="menu">
+        {% if menu.dashboard %}
+          <li class="menu-item {% if page == 'dashboard' %}active{% endif %}">
+            <a href="/dashboard">PÁGINA INICIAL</a>
+          </li>
+        {% endif %}
+
+        {% if menu.calendar %}
+          <li class="menu-item {% if page == 'calendario' %}active{% endif %}">
+            <a href="/calendario">CALENDÁRIO</a>
+          </li>
+        {% endif %}
+
+        {% if menu.equipe %}
+          <li class="menu-item"><a href="#">EQUIPE</a></li>
+        {% endif %}
+
+        {% if menu.projetos %}
+          <li class="menu-item"><a href="/services">SERVIÇOS</a></li>
+        {% endif %}
+
+        {% if menu.contratos %}
+          <li class="menu-item"><a href="#">CONTRATOS</a></li>
+        {% endif %}
+
+        {% if menu.contrato %}
+          <li class="menu-item"><a href="#">CONTRATO</a></li>
+        {% endif %}
+
+        {% if menu.clientes %}
+          <li class="menu-item"><a href="#">CLIENTES</a></li>
+        {% endif %}
+
+        {% if menu.usuarios %}
+          <li class="menu-item"><a href="#">USUÁRIOS</a></li>
+        {% endif %}
+
+        {% if menu.servicos %}
+          <li class="menu-item"><a href="#">SERVIÇOS</a></li>
+        {% endif %}
+
+        {% if menu.pagamentos %}
+          <li class="menu-item"><a href="#">PAGAMENTOS</a></li>
+        {% endif %}
+
+        {% if menu.tickets %}
+          <li class="menu-item"><a href="#">TICKETS</a></li>
+        {% endif %}
+
+      
+        <li class="menu-item sair"><a href="/logout">SAIR</a></li>
+      </ul>      
+    </div>
+
+    <main class="main">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</body>
+</html>

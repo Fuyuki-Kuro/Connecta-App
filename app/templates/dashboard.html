@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+<head>
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<div class="dashboard-container">
+
+  <!-- Usuário logado -->
+  <div class="info-div">
+    <h2 class="dashboard-username">{{ user.name }}</h2>
+    <span class="dashboard-typeuser">
+      {% if user.type == 'Admin' %}
+        Administrador
+      {% elif user.type == 'funcionario' %}
+        {{ user.role }}
+      {% else %}
+        Cliente
+      {% endif %}
+    </span>
+  </div>
+
+  <!-- Cards e conteúdo principal -->
+  <section class="info-cards">
+    <div class="card">
+      <div class="icon-circle">
+        <i class="fas fa-project-diagram"></i>
+      </div>
+      <h2>Projetos ativos</h2>
+      <p>{{ projects_count }} em andamento</p>
+    </div>
+
+    <div class="card">
+      <div class="progress-circle" data-value="{{ postagens_percent }}">
+        <span>{{ postagens_percent }}%</span>
+      </div>
+      <h2>Postagens da semana</h2>
+      <p>{{ postagens_count }} de 16 previstas</p>
+    </div>
+
+    <div class="card">
+      <div class="progress-circle" data-value="{{ faturamento_percent }}">
+        <span>{{ faturamento_valor }}</span>
+      </div>
+      <h2>Faturamento</h2>
+      <p>Meta: R$8.000</p>
+    </div>
+
+    <div class="card">
+      <div class="icon-circle alert">
+        <i class="fas fa-ticket-alt"></i>
+      </div>
+      <h2>Tickets pendentes</h2>
+      <p>{{ tickets_pendentes }} aguardando resposta</p>
+    </div>
+  </section>
+
+  <!-- Blocos com mais detalhes -->
+  <section class="dashboard-sections">
+    <div class="section-block">
+      <h3>📦 Próximas entregas</h3>
+      <ul>
+        {% if proximas_entregas %}
+          {% for entrega in proximas_entregas %}
+            <li><strong>{{ entrega.data | datetimeformat("short") }}:</strong> {{ entrega.descricao }}</li>
+          {% endfor %}
+        {% else %}
+          <li>Nenhuma entrega prevista.</li>
+        {% endif %}
+      </ul>
+    </div>
+
+    {# Equipe online removida conforme pedido anterior #}
+
+    <div class="section-block">
+      <h3>🚨 Alertas importantes</h3>
+      <ul>
+        <li>⚠️ Cliente XPTO solicitou alterações urgentes no projeto.</li>
+        <li>⚠️ 2 faturas vencem hoje.</li>
+        <li>📌 Briefing novo adicionado no sistema.</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

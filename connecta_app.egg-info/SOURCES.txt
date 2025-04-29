@@ -1,0 +1,9 @@
+pyproject.toml
+app/main.py
+app/routes/views.py
+app/routes/views_new.py
+connecta_app.egg-info/PKG-INFO
+connecta_app.egg-info/SOURCES.txt
+connecta_app.egg-info/dependency_links.txt
+connecta_app.egg-info/requires.txt
+connecta_app.egg-info/top_level.txt

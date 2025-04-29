@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 67.68 67.68">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f1f1f1;
+        stroke: #e72063;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: url(#Gradiente_sem_nome_506);
+      }
+
+      .cls-3 {
+        fill: #e72063;
+      }
+    </style>
+    <linearGradient id="Gradiente_sem_nome_506" data-name="Gradiente sem nome 506" x1="22.08" y1="37.4" x2="54.13" y2="37.4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff8bb"/>
+      <stop offset=".31" stop-color="#fef4bc"/>
+      <stop offset=".56" stop-color="#fceac2"/>
+      <stop offset=".78" stop-color="#f8dacc"/>
+      <stop offset=".99" stop-color="#f4c2da"/>
+      <stop offset="1" stop-color="#f4c2db"/>
+    </linearGradient>
+  </defs>
+  <g id="Camada_1-2" data-name="Camada 1">
+    <g>
+      <circle class="cls-3" cx="33.84" cy="33.84" r="33.84"/>
+      <g>
+        <path class="cls-2" d="M27.65,27.92h16.92c2.58,0,4.67,2.09,4.67,4.67v6.61c1.28,2.42,2.56,4.83,3.84,7.25-2.02-.75-4.05-1.49-6.07-2.24h-19.13c-2.93,0-5.3-2.37-5.3-5.3v-5.93c0-2.8,2.27-5.07,5.07-5.07Z"/>
+        <path class="cls-1" d="M40.03,21.22h-16.92c-2.58,0-4.67,2.09-4.67,4.67v6.61c-1.28,2.42-2.56,4.83-3.84,7.25,2.02-.75,4.05-1.49,6.07-2.24h19.13c2.93,0,5.3-2.37,5.3-5.3v-5.93c0-2.8-2.27-5.07-5.07-5.07Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

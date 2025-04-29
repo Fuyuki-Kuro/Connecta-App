@@ -1,0 +1,191 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  font-family: 'Montserrat Alternates', sans-serif;
+  background: #f3f3f3;
+  color: #333;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Background animado */
+.background {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #fff0f5, #ffe2eb);
+  z-index: -2;
+  overflow: hidden;
+}
+.shape-top, .shape-bottom {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+.shape-top { top: 0; left: 0; animation: floatTop 20s ease-in-out infinite; }
+.shape-bottom { bottom: 0; right: 0; animation: floatBottom 25s ease-in-out infinite; }
+@keyframes floatTop { 0%,100%{transform:translateY(0);} 50%{transform:translateY(15px);} }
+@keyframes floatBottom { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-15px);} }
+
+/* Container principal */
+.services-container {
+  max-width: 1300px;
+  margin: 40px auto 40px;
+  padding: 0 20px;
+}
+
+/* Título da página */
+.services-header {
+  margin-bottom: 30px;
+  text-align: left;
+}
+.services-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f20066;
+  margin-bottom: 10px;
+}
+.services-header p {
+  font-size: 1rem;
+  color: #777;
+}
+
+/* Botão de adicionar serviço */
+.add-service {
+  text-align: left;
+  margin-bottom: 30px;
+}
+.add-button {
+  background: #f20066;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.add-button:hover {
+  background: #d9005c;
+}
+
+/* Grid dos cards */
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* Card estilo Glass */
+.service-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 25px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+/* Cabeçalho do card */
+.card-header {
+  margin-bottom: 20px;
+}
+.card-header h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f20066;
+}
+.badge {
+  display: inline-block;
+  background-color: #f20066;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+/* Conteúdo do card */
+.card-desc {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Rodapé do card (ações) */
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.btn {
+  flex: 1 1 48%;
+  background-color: #f20066;
+  color: white;
+  padding: 12px 0;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.btn:hover {
+  background-color: #d9005c;
+}
+
+/* Botões especiais (cores diferentes) */
+.btn-view { background-color: #5c6bc0; }
+.btn-view:hover { background-color: #3949ab; }
+
+.btn-edit { background-color: #26c6da; }
+.btn-edit:hover { background-color: #00acc1; }
+
+.btn-delete { background-color: #ef5350; }
+.btn-delete:hover { background-color: #e53935; }
+
+/* Mensagem de nenhum serviço */
+.no-services {
+  text-align: center;
+  font-size: 1rem;
+  color: #888;
+  padding: 40px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .services-header h1 {
+    font-size: 2rem;
+  }
+  .services-list {
+    grid-template-columns: 1fr;
+  }
+  .add-service {
+    text-align: center;
+  }
+  .add-button {
+    width: 100%;
+  }
+}

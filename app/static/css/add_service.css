@@ -1,0 +1,9 @@
+/* app/static/css/service.css */
+.services-container { padding: 40px; }
+.services-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+.service-card { background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 20px; }
+.add-service-container { padding: 40px; }
+.add-service-form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; }
+.add-service-form label { font-weight: 600; }
+.add-service-form input, .add-service-form select, .add-service-form button { padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+.add-service-form button { background: #ef1368; color: white; border: none; cursor: pointer; }

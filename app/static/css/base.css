@@ -1,0 +1,194 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat Alternates', sans-serif;
+  background: #f3f3f3;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Background Animado */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(135deg, #fff0f5 0%, #ffe2eb 100%);
+  overflow: hidden;
+}
+
+.shape-top,
+.shape-bottom {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+
+.shape-top {
+  top: 0;
+  left: 0;
+  animation: floatTop 20s ease-in-out infinite;
+}
+
+.shape-bottom {
+  bottom: 0;
+  right: 0;
+  animation: floatBottom 25s ease-in-out infinite;
+}
+
+@keyframes floatTop {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(15px); }
+}
+
+@keyframes floatBottom {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Estrutura base */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar (Esquerda) */
+.sidebar {
+  width: 180px;
+  background-color: #f20066;
+  color: white;
+  padding: 40px 15px;
+  margin: 10px;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.sidebar .logo {
+  width: 100%;
+  max-width: 100px;
+  margin-bottom: 30px;
+}
+
+.sidebar .logo img {
+  width: 30%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.menu {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-item {
+  padding: 12px 10px;
+  border-radius: 20px;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.menu-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background-color: #ffffff22;
+}
+
+.menu-item.active {
+  background-color: white;
+  color: #f20066;
+}
+
+.menu-item.sair {
+  margin-top: auto;
+  background-color: #d9005c;
+  color: white;
+}
+
+/* Adicionando o scroll vertical ao main */
+.main {
+  flex: 1;
+  padding: 40px;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  
+  /* Limita a altura da área principal e permite o scroll */
+  max-height: calc(100vh - 20px);  /* Ajusta o valor conforme a altura do cabeçalho e do rodapé */
+  overflow-y: scroll;  /* Adiciona o scroll vertical */
+  padding-right: 15px;  /* Espaço extra para evitar que o conteúdo fique oculto pela barra de rolagem */
+}
+
+
+/* Cards de informações importantes */
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h2 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #f20066;
+}
+
+.card p {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Botão flutuante (se ainda quiser usar) */
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #f20066;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background 0.3s ease;
+  z-index: 20;
+}
+
+.floating-button:hover {
+  background-color: #d9005c;
+}

@@ -1,26 +1,18 @@
 [project]
-name = "connecta_app"
+name = "connecta-app"
 version = "0.1.0"
-description = "Projeto Connecta-App"
-authors = [{ name = "leonard.dev", email = "adm.leonardogdp@gmail.com" }]
+description = "Add your description here"
 readme = "README.md"
+requires-python = ">=3.11"
 dependencies = [
     "babel>=2.17.0",
     "bcrypt>=4.3.0",
     "fastapi>=0.115.12",
     "jinja2>=3.1.6",
     "pydantic>=2.11.3",
-    "pymongo[svr]>=4.12.0",
+    "pymongo[srv]>=4.12.0",
     "python-dotenv>=1.1.0",
     "python-jose>=3.4.0",
     "python-multipart>=0.0.20",
-    "uvicorn>=0.34.2",
+    "uvicorn>=0.34.1",
 ]
-
-[tool.poetry.dependencies]
-python = "^3.8"
-dependencies = []
-
-[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"

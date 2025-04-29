@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Ver Serviço{% endblock %}
+
+{% block content %}
+<div class="service-details">
+    <h1>{{ service.nome }}</h1>
+    <p><strong>Cliente:</strong> {{ service.cliente_info.nome }}</p>
+    <p><strong>Email:</strong> {{ service.cliente_info.email }}</p>
+    <p><strong>Descrição:</strong> {{ service.descricao }}</p>  
+    <p><strong>Status:</strong> {{ service.status }}</p>
+
+    {% if user.type == "Admin" %}
+        <a href="/services/{{ service._id }}/edit" class="btn btn-edit">Editar Serviço</a>
+    {% endif %}
+
+    {% if user.type == "funcionario" and service.status != "Aceito" %}
+        <a href="/services/{{ service._id }}/accept" class="btn btn-accept">Aceitar Serviço</a>
+    {% endif %}
+</div>
+{% endblock %}

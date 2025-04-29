@@ -1,0 +1,410 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Montserrat Alternates', sans-serif;
+  background-color: #f2f2f2;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe2eb 100%);
+    overflow: hidden;
+  }
+  
+  .shape-top,
+  .shape-bottom {
+    position: absolute;
+    width: 100%;
+    height: auto;
+  }
+  
+  .shape-top {
+    top: 0;
+    left: 0;
+    animation: floatTop 20s ease-in-out infinite;
+  }
+  
+  .shape-bottom {
+    bottom: 0;
+    right: 0;
+    animation: floatBottom 25s ease-in-out infinite;
+  }
+  
+  @keyframes floatTop {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(15px); }
+  }
+  
+  @keyframes floatBottom {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+  }    
+
+.container {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); /* Suporte Safari */
+    width: 800px;
+    height: 500px;
+    display: flex;
+    border-radius: 40px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    position: relative;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.container .bg-text {
+    font-size: 7em;
+    font-weight: 900;
+    line-height: 1em;  
+    position: absolute;
+    top: 3%;
+    left: -3.5%;
+    color: #ef1368;  /* Cor do texto dentro do container */
+    z-index: 1;  /* Para garantir que o texto fique na frente do fundo */
+}
+
+.left {
+    flex: 1;
+    background-color: #ef1368;
+    color: white;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    overflow: hidden;
+}
+
+.left h1 {
+    font-size: 7em;
+    font-weight: 900;
+    line-height: 1em;
+    position: absolute;
+    top: 3%;
+    left: -8%;  /* Ajuste para que fique parcialmente fora */
+    color: white;  /* Cor do texto dentro do container */
+    z-index: 1;  /* Para garantir que o texto fique na frente do fundo */
+}
+
+.left p {
+    margin-top: 20px;
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 20px;
+    position: absolute;
+    bottom: 60px;
+    left: 50px;
+}
+
+.right {
+    flex: 1;
+    background: linear-gradient(to right, #f1f1f1, #fcd9e4);
+    padding: 40px;
+    position: relative;
+    border-radius: 0 40px 40px 0;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* centraliza verticalmente */
+  }
+  
+  .login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* espaçamento entre os elementos */
+    margin-top: 40px; /* opcional: se quiser empurrar ainda mais para baixo */
+  }
+  
+
+.right .icon {
+    position: absolute;
+    top: 6%;
+    right: 8%;
+    width: 6%;
+    border-radius: 5px;
+}
+
+.right h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ef1368;
+    margin-bottom: 30px;
+}
+
+.right form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right input[type="text"],
+.right input[type="password"] {
+    padding: 10px 15px;
+    border-radius: 30px;
+    border: 2px solid #ef1368;
+    outline: none;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.checkbox-area {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #ef1368;
+}
+
+.checkbox-area input {
+    margin-right: 5px;
+}
+
+.right button {
+    padding: 12px;
+    background-color: #ef1368;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.right a {
+    margin-top: 15px;
+    display: inline-block;
+    font-size: 12px;
+    color: #ef1368;
+    text-decoration: none;
+    text-align: right;
+}
+
+.login-logo {
+    display: flex;
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: flex-start;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 900;
+    font-size: 2em;
+    position: relative;
+    margin: 0 auto 20px auto; /* adiciona espaço abaixo e centraliza com margin */
+  }
+  
+  
+  .login-left { 
+    color: #ef1368;
+    z-index: 2;
+    line-height: 1;
+  }
+  
+  /* Container rosa reposicionado */
+  .login-container {
+    position: relative;
+    margin-left: 0px;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #ef1368;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -15px; /* ajuste maior que -15% para alinhar melhor */
+    overflow: hidden;
+  }
+  
+  
+  /* Texto rosa (fundo) */
+  .login-rosa {
+    color: #ef1368;
+    position: absolute;
+    left: 13%;
+    top: -15%;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .login-branco {
+    color: white;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    z-index: 2;
+  }
+  
+  .password-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  
+  .password-wrapper input {
+    width: 100%;
+    padding-right: 40px; /* espaço para o ícone */
+  }
+  
+  .toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 55%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #ef1368;
+  }
+
+
+.error-message {
+  width: 100%;
+  text-align: center;
+  color: #ef1368;
+  font-weight: bold;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  animation: fadeIn 0.5s ease;
+}
+  
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+  
+   
+  /* Esconde o checkbox nativo */
+.checkbox-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: #ef1368;
+  margin-top: 5px;
+}
+
+/* Estiliza o label para parecer um checkbox customizado */
+.checkbox-area label {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #444;
+  user-select: none;
+}
+
+.checkbox-area label {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 0.8em;
+  color: #444;
+  user-select: none;
+  line-height: 20px; /* Alinha verticalmente com o círculo */
+  display: flex;
+  align-items: center;
+}
+
+/* Círculo externo */
+.checkbox-area label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #ef1368;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+/* Círculo interno (preenchido) */
+.checkbox-area label::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ef1368;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Ativo quando marcado */
+.checkbox-area input[type="checkbox"]:checked + label::after {
+  opacity: 1;
+}
+
+/* Estilo para dispositivos móveis (telas menores que 768px) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Faz o container ter uma coluna em vez de duas */
+    height: auto; /* Ajusta a altura do container para se ajustar ao conteúdo */
+  }
+
+  .left {
+    display: none; /* Esconde a seção left em dispositivos móveis */
+  }
+
+  .right {
+    flex: 1; /* Faz a seção direita ocupar todo o espaço disponível */
+    display: block; /* Garante que a seção right seja visível */
+    padding: 20px; /* Ajusta o padding para o conteúdo da direita */
+  }
+
+  /* Esconde todos os elementos da seção right, exceto o formulário */
+  .right .icon,
+  .right h2,
+  .right .bg-text {
+    display: none; /* Esconde o ícone, título e o texto de fundo */
+  }
+
+  /* Apenas o formulário deve ser visível */
+  .right .login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Espaçamento entre os campos do formulário */
+  }
+
+  .right form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaçamento entre os campos */
+  }
+
+  .bg-text{
+    display: none;
+  }
+
+  /* Garantir que o formulário ocupe o espaço corretamente */
+  .right input[type="text"],
+  .right input[type="password"],
+  .right button {
+    width: 100%; /* Garantir que os inputs e o botão ocupem a largura total */
+  }
+}
