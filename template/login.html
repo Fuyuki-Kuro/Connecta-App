@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <title>Login</title>
+  <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+
+  <div class="background">
+    <svg class="shape-top" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#ef1368" fill-opacity="0.1" d="M0,160L80,186.7C160,213,320,267,480,245.3C640,224,800,128,960,96C1120,64,1280,96,1360,112L1440,128V0H1360C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0H0Z" />
+    </svg>
+    <svg class="shape-bottom" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#f88ca5" fill-opacity="0.1" d="M0,480L80,426.7C160,373,320,267,480,234.7C640,203,800,245,960,261.3C1120,277,1280,267,1360,261.3L1440,256V600H1360C1280,600,1120,600,960,600C800,600,640,600,480,600C320,600,160,600,80,600H0Z" />
+    </svg>
+  </div>
+  
+  <div class="container">
+    <div class="bg-text">CO<br>NNE<br>CTA</div>
+    <div class="left">
+      <h1>CO<br>NNE<br>CTA</h1>
+      <p>Conectando sonhos <br> com oportunidades!</p>
+    </div>
+    <div class="right">
+      <div class="icon">
+        <img src="/static/img/logo.png" style="width: 100%;" alt="">
+      </div>
+      
+      <div class="login-content">
+        <div class="login-logo">
+          <span class="login-left">LO</span>
+          <div class="login-container">
+            <span class="login-branco">GIN</span>
+          </div>
+          <span class="login-rosa">GIN</span>
+        </div>     
+        <form action="/" method="POST">
+          <input type="text" placeholder="usuário" name="username" required>
+          <div class="password-wrapper">
+            <input type="password" id="senha" placeholder="senha" name="password" required>
+            <span class="toggle-password" onclick="togglePassword()">
+              <!-- Ícone de olho (visível) -->
+              <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#ef1368" width="20" height="20">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M2.458 12C3.732 7.943 7.522 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </span>
+          </div>                  
+          <div class="checkbox-area">
+            <input type="checkbox" id="manter" name="manter_conectado" value="true">
+            <label for="manter">Mantenha-me conectado</label>
+          </div>
+          <span class="error-message" id="error-message" {% if not error %}style="display: none;"{% endif %}>
+            {% if error %}
+              {{ error }}
+            {% endif %}
+          </span>          
+          <button type="submit">ENTRAR</button>
+        </form>
+        <a href="#">Esqueci minha Senha</a>
+      </div>
+    </div>    
+  </div>
+</body>
+</html>
