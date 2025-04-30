@@ -196,7 +196,7 @@ async def list_services(
         "request_service": user_type == "cliente"
     }
     services = list(svc.collection.find())
-    print("Serviços")
+    print("Serviços teste")
     return templates.TemplateResponse(
         "services.html",
         {"request": request, "services": services, "actions": actions, "menu": menu_active(user_type)}
