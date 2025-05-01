@@ -91,12 +91,11 @@ class UserService:
             return {"status_code": 400, "message": "Usuário não encontrado"}
         
     def add_service_info(self, user_id: str, service_id) -> dict:
-
         service_data = {
-            service_id: {
-                'status': "PENDENTE"
-            }
+            "service_id": service_id,
+            "status": "PENDENTE"
         }
+
         try:
             result = self.collection.update_one(
                 {"_id": ObjectId(user_id)},
@@ -104,9 +103,12 @@ class UserService:
             )
             if result.modified_count:
                 # muda o status do serviço para aceito
-                self.update_service(service_id, {"status": "aceito"})
-                
+                self.service_manager.update_service(
+                    service_id,
+                    {"servico.status": "EM ANDAMENTO"}
+                )
                 return {"status_code": 200, "message": "Serviço adicionado com sucesso"}
+            
             return {"status_code": 500, "message": "Falha ao atualizar usuário"}
         except Exception as e:
             return {"status_code": 500, "message": "Erro ao adicionar serviço", "erro": str(e)}
