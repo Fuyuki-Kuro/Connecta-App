@@ -248,7 +248,7 @@ async def accept_service(
     # 3) Adiciona esse serviço no services_info do usuário
     user_update = db.add_service_info(user_id, service_id)
     if user_update["status_code"] != 200:
-        raise HTTPException(status_code=500, detail="Erro ao registrar serviço para o usuário")
+        raise HTTPException(status_code=500, detail=f"Erro ao registrar serviço para o usuário {user_update["message"]}")
 
     # 4) Redireciona de volta para a lista de serviços ou dashboard
     return RedirectResponse(url="/services", status_code=302)
