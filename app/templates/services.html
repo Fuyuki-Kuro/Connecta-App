@@ -22,42 +22,44 @@
   <!-- Lista de serviços -->
   <div class="services-list">
     {% for service in services %}
-    <div class="service-card">
+      {% if service.servico.status == "PENDENTE" %}
+        <div class="service-card">
 
-      <!-- Cabeçalho do card -->
-      <div class="card-header">
-        <h2>{{ service.servico.nome }}</h2>
-        <div class="badge">{{ service.servico.tipo | capitalize }}</div>
-      </div>
+          <!-- Cabeçalho do card -->
+          <div class="card-header">
+            <h2>{{ service.servico.nome }}</h2>
+            <div class="badge">{{ service.servico.tipo | capitalize }}</div>
+          </div>
 
-      <!-- Conteúdo do card -->
-      <div class="card-desc">
-        <p><strong>Cliente:</strong> {{ service.cliente_info.nome }}</p>
-        <p><strong>Email:</strong> {{ service.cliente_info.email }}</p>
-        <p><strong>Descrição:</strong> {{ service.servico.descricao }}</p>
-        <p><strong>Data de Entrega:</strong> {{ service.servico.data_de_entrega }}</p>
-        <p><strong>Status:</strong> {{ service.servico.status | capitalize }}</p>
-      </div>
+          <!-- Conteúdo do card -->
+          <div class="card-desc">
+            <p><strong>Cliente:</strong> {{ service.cliente_info.nome }}</p>
+            <p><strong>Email:</strong> {{ service.cliente_info.email }}</p>
+            <p><strong>Descrição:</strong> {{ service.servico.descricao }}</p>
+            <p><strong>Data de Entrega:</strong> {{ service.servico.data_de_entrega }}</p>
+            <p><strong>Status:</strong> {{ service.servico.status | capitalize }}</p>
+          </div>
 
-      <!-- Ações do card -->
-      <div class="card-actions">
-        {% if actions.view %}
-          <a href="/services/{{ service._id }}" class="btn btn-view">Ver</a>
-        {% endif %}
-        {% if actions.edit %}
-          <a href="/services/{{ service._id }}/edit" class="btn btn-edit">Editar</a>
-        {% endif %}
-        {% if actions.delete %}
-          <a href="/services/{{ service._id }}/delete" class="btn btn-delete">Excluir</a>
-        {% endif %}
-        {% if actions.accept %}
-          <a href="/services/{{ service._id }}/accept" class="btn btn-accept">Aceitar Serviço</a>
-        {% endif %}
-        {% if actions.request_service %}
-          <a href="/services/request" class="btn btn-request">Solicitar Novo Serviço</a>
-        {% endif %}
-      </div>
-
+          <!-- Ações do card -->
+          <div class="card-actions">
+            {% if actions.view %}
+              <a href="/services/{{ service._id }}" class="btn btn-view">Ver</a>
+            {% endif %}
+            {% if actions.edit %}
+              <a href="/services/{{ service._id }}/edit" class="btn btn-edit">Editar</a>
+            {% endif %}
+            {% if actions.delete %}
+              <a href="/services/{{ service._id }}/delete" class="btn btn-delete">Excluir</a>
+            {% endif %}
+            {% if actions.accept %}
+              <a href="/services/{{ service._id }}/accept" class="btn btn-accept">Aceitar Serviço</a>
+            {% endif %}
+            {% if actions.request_service %}
+              <a href="/services/request" class="btn btn-request">Solicitar Novo Serviço</a>
+            {% endif %}
+          </div>
+      {% endif %}
+          
     </div>
     {% else %}
     <div class="no-services">
