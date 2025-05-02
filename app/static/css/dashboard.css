@@ -2,6 +2,8 @@ body {
   font-family: 'Montserrat Alternates', sans-serif;
   margin: 0;
   padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 .dashboard-container {
@@ -42,12 +44,12 @@ body {
 }
 
 .card {
-  background: var(--color-main-bg);
+  background: var(--color-card-bg);
   border-radius: 25px;
   padding: 25px 20px;
   box-shadow: 0 8px 24px var(--color-shadow);
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--color-card-border);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -67,7 +69,7 @@ body {
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 30px var(--color-shadow-strong);
+  box-shadow: 0 12px 30px var(--color-shadow-hover);
 }
 
 .card h2,
@@ -96,12 +98,12 @@ body {
 }
 
 .section-block {
-  background: var(--color-main-bg);
+  background: var(--color-card-bg);
   border-radius: 25px;
   padding: 25px 20px;
   box-shadow: 0 8px 24px var(--color-shadow);
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--color-card-border);
 }
 
 .section-block ul {
@@ -119,7 +121,8 @@ body {
     font-size: 1.4rem;
   }
 
-  .info-cards, .dashboard-sections {
+  .info-cards,
+  .dashboard-sections {
     grid-template-columns: 1fr;
   }
 }
@@ -151,7 +154,7 @@ body {
 }
 
 .icon-circle.alert {
-  background: #ff9800; /* alerta pode continuar fora das variáveis se for exclusivo */
+  background: var(--color-warning, #ff9800);
 }
 
 .progress-circle {
@@ -166,7 +169,7 @@ body {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 6px solid #eee;
+  border: 6px solid var(--color-light-gray, #eee);
 }
 
 .progress-circle span {
