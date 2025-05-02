@@ -1,20 +1,11 @@
 :root {
-    --color-primary: #ff4f8b;            /* Rosa vibrante para destacar */
-    --color-primary-dark: #d92d6b;
-    --color-bg: #121212;                /* Fundo geral escuro */
-    --color-text: #e0e0e0;              /* Texto principal claro */
-    --color-text-light: #aaaaaa;        /* Texto secundário */
-    --color-white: #1f1f1f;             /* Fundo interno (em vez de branco puro) */
-    --color-card-bg: rgba(30, 30, 30, 0.85); /* Cartão translúcido escuro */
-    --color-card-border: rgba(255, 255, 255, 0.05); /* Borda sutil */
-    --color-shadow: rgba(0, 0, 0, 0.5);       /* Sombra mais densa */
-    --color-shadow-hover: rgba(0, 0, 0, 0.7);
-  
-    --btn-view-bg: #7986cb;             /* Azul lavanda escuro */
-    --btn-view-hover: #5c6bc0;
-    --btn-edit-bg: #4dd0e1;             /* Azul piscina suave */
-    --btn-edit-hover: #26c6da;
-    --btn-delete-bg: #ef5350;           /* Vermelho mais quente */
-    --btn-delete-hover: #e53935;
+    --color-primary: #bb0047;
+    --color-bg: #121212;
+    --color-text: #e0e0e0;
+    --color-white: #1e1e1e;
+    --color-card-bg: rgba(30, 30, 30, 0.85);
+    --color-card-border: rgba(255, 255, 255, 0.1);
+    --color-shadow: rgba(255, 255, 255, 0.1);
+    --color-pink-light: #311e28;
   }
   
