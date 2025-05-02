@@ -17,7 +17,7 @@ class MongoDBConnection:
 
     def __new__(cls):
         if cls._instance is None:
-            uri = os.getenv("MONGO_URI")
+            uri = os.getenv("MONGODB_URI")
             client = MongoClient(uri, tlsAllowInvalidCertificates=True)
             db = client[os.getenv("MONGO_DB_NAME", "connecta")]
             fs = gridfs.GridFS(db)

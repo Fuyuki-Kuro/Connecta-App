@@ -159,7 +159,7 @@ services = {
             {"imagem": "imagem2_74e034f4.jpg", "descricao": "Imagem 2"},
             {"imagem": "imagem3_b4ac58e2.jpg", "descricao": "Imagem 3"}
         ],
-        "status": "ativo"
+        "status": "PENDENTE"
     }
 }
 
