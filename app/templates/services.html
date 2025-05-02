@@ -21,6 +21,7 @@
 
   <!-- Lista de serviços -->
   <div class="services-list">
+    {%print(services) %}
     {% for service in services %}
       {% if service.servico.status == "PENDENTE" %}
         <div class="service-card">
