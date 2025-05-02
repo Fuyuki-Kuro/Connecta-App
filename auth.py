@@ -36,7 +36,7 @@ def verify_cpf(cpf: str) -> bool:
 
     # Verifica se os dígitos calculados são iguais aos fornecidos
     return cpf[-2:] == digito_1 + digito_2
-    print("teste 6")
+    print("teste 7")
 
 def create_token(data: dict):
     to_encode = data.copy()
