@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>{% block title %}Dashboard{% endblock %}</title>
   <link rel="stylesheet" href="/static/css/base.css">
+  <link id="theme-style" rel="stylesheet" href="/css/theme-light.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -70,6 +71,8 @@
 
       
         <li class="menu-item sair"><a href="/logout">SAIR</a></li>
+
+        <button id="theme-toggle" class="floating-button">🌓</button>
       </ul>      
     </div>
 
@@ -77,5 +80,20 @@
       {% block content %}{% endblock %}
     </main>
   </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeLink = document.getElementById('theme-style');
+  
+    // Verifica o tema salvo
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    themeLink.href = `/static/css/theme-${currentTheme}.css`;
+  
+    themeToggle.addEventListener('click', () => {
+      const newTheme = themeLink.href.includes('light') ? 'dark' : 'light';
+      themeLink.href = `/static/css/theme-${newTheme}.css`;
+      localStorage.setItem('theme', newTheme);
+    });
+  </script>
 </body>
 </html>

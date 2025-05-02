@@ -1,3 +1,17 @@
+:root {
+  --color-bg: #f3f3f3;
+  --color-text: #333;
+  --color-primary: #f20066;
+  --color-primary-dark: #d9005c;
+  --color-sidebar-bg: var(--color-primary);
+  --color-sidebar-hover: #ffffff22;
+  --color-card-title: var(--color-primary);
+  --color-main-bg: rgba(255, 255, 255, 0.65);
+  --color-white: #ffffff;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-shadow-strong: rgba(0, 0, 0, 0.3);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,8 +20,8 @@
 
 body {
   font-family: 'Montserrat Alternates', sans-serif;
-  background: #f3f3f3;
-  color: #333;
+  background: var(--color-bg);
+  color: var(--color-text);
   overflow-x: hidden;
 }
 
@@ -58,8 +72,8 @@ body {
 /* Sidebar (Esquerda) */
 .sidebar {
   width: 180px;
-  background-color: #f20066;
-  color: white;
+  background-color: var(--color-sidebar-bg);
+  color: var(--color-white);
   padding: 40px 15px;
   margin: 10px;
   border-top-right-radius: 40px;
@@ -67,7 +81,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px var(--color-shadow);
 }
 
 .sidebar .logo {
@@ -109,38 +123,35 @@ body {
 }
 
 .menu-item:hover {
-  background-color: #ffffff22;
+  background-color: var(--color-sidebar-hover);
 }
 
 .menu-item.active {
-  background-color: white;
-  color: #f20066;
+  background-color: var(--color-white);
+  color: var(--color-primary);
 }
 
 .menu-item.sair {
   margin-top: auto;
-  background-color: #d9005c;
-  color: white;
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
 }
 
-/* Adicionando o scroll vertical ao main */
+/* Main */
 .main {
   flex: 1;
   padding: 40px;
   margin: 10px;
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--color-main-bg);
   border-radius: 30px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px var(--color-shadow-strong);
   backdrop-filter: blur(5px);
-  
-  /* Limita a altura da área principal e permite o scroll */
-  max-height: calc(100vh - 20px);  /* Ajusta o valor conforme a altura do cabeçalho e do rodapé */
-  overflow-y: scroll;  /* Adiciona o scroll vertical */
-  padding-right: 15px;  /* Espaço extra para evitar que o conteúdo fique oculto pela barra de rolagem */
+  max-height: calc(100vh - 20px);
+  overflow-y: scroll;
+  padding-right: 15px;
 }
 
-
-/* Cards de informações importantes */
+/* Cards */
 .info-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -149,10 +160,10 @@ body {
 }
 
 .card {
-  background: white;
+  background: var(--color-white);
   border-radius: 20px;
   padding: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 16px var(--color-shadow);
   transition: transform 0.3s ease;
 }
 
@@ -163,7 +174,7 @@ body {
 .card h2 {
   font-size: 1rem;
   margin-bottom: 10px;
-  color: #f20066;
+  color: var(--color-card-title);
 }
 
 .card p {
@@ -171,24 +182,24 @@ body {
   font-weight: 600;
 }
 
-/* Botão flutuante (se ainda quiser usar) */
+/* Botão flutuante */
 .floating-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #f20066;
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-white);
   border: none;
   border-radius: 50%;
   width: 60px;
   height: 60px;
   font-size: 24px;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px var(--color-shadow-strong);
   transition: background 0.3s ease;
   z-index: 20;
 }
 
 .floating-button:hover {
-  background-color: #d9005c;
+  background-color: var(--color-primary-dark);
 }

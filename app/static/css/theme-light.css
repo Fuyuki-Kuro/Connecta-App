@@ -1,0 +1,20 @@
+:root {
+    --color-primary: #f20066;
+    --color-primary-dark: #d9005c;
+    --color-bg: #f3f3f3;
+    --color-text: #333;
+    --color-text-light: #777;
+    --color-white: #ffffff;
+    --color-card-bg: rgba(255, 255, 255, 0.65);
+    --color-card-border: rgba(255, 255, 255, 0.2);
+    --color-shadow: rgba(0, 0, 0, 0.15);
+    --color-shadow-hover: rgba(0, 0, 0, 0.2);
+  
+    --btn-view-bg: #5c6bc0;
+    --btn-view-hover: #3949ab;
+    --btn-edit-bg: #26c6da;
+    --btn-edit-hover: #00acc1;
+    --btn-delete-bg: #ef5350;
+    --btn-delete-hover: #e53935;
+  }
+  

@@ -7,8 +7,8 @@
 
 body, html {
   font-family: 'Montserrat Alternates', sans-serif;
-  background: #f3f3f3;
-  color: #333;
+  background: var(--color-bg);
+  color: var(--color-text);
   overflow-x: hidden;
   min-height: 100vh;
 }
@@ -46,12 +46,12 @@ body, html {
 .services-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #f20066;
+  color: var(--color-primary);
   margin-bottom: 10px;
 }
 .services-header p {
   font-size: 1rem;
-  color: #777;
+  color: var(--color-text-light);
 }
 
 /* Botão de adicionar serviço */
@@ -60,8 +60,8 @@ body, html {
   margin-bottom: 30px;
 }
 .add-button {
-  background: #f20066;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
   padding: 10px 25px;
   border-radius: 25px;
   font-size: 0.9rem;
@@ -73,7 +73,7 @@ body, html {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 .add-button:hover {
-  background: #d9005c;
+  background: var(--color-primary-dark);
 }
 
 /* Grid dos cards */
@@ -87,20 +87,20 @@ body, html {
 /* Card estilo Glass */
 .service-card {
   width: 100%;
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--color-card-bg);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid var(--color-card-border);
   border-radius: 25px;
   padding: 25px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px var(--color-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .service-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 28px var(--color-shadow-hover);
 }
 
 /* Cabeçalho do card */
@@ -110,12 +110,12 @@ body, html {
 .card-header h2 {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #f20066;
+  color: var(--color-primary);
 }
 .badge {
   display: inline-block;
-  background-color: #f20066;
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-white);
   font-size: 0.75rem;
   font-weight: 600;
   padding: 6px 12px;
@@ -127,7 +127,7 @@ body, html {
 /* Conteúdo do card */
 .card-desc {
   font-size: 0.95rem;
-  color: #444;
+  color: var(--color-text);
   margin-bottom: 20px;
   line-height: 1.5;
 }
@@ -142,8 +142,8 @@ body, html {
 
 .btn {
   flex: 1 1 48%;
-  background-color: #f20066;
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-white);
   padding: 12px 0;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -155,24 +155,24 @@ body, html {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 .btn:hover {
-  background-color: #d9005c;
+  background-color: var(--color-primary-dark);
 }
 
 /* Botões especiais (cores diferentes) */
-.btn-view { background-color: #5c6bc0; }
-.btn-view:hover { background-color: #3949ab; }
+.btn-view { background-color: var(--btn-view-bg); }
+.btn-view:hover { background-color: var(--btn-view-hover); }
 
-.btn-edit { background-color: #26c6da; }
-.btn-edit:hover { background-color: #00acc1; }
+.btn-edit { background-color: var(--btn-edit-bg); }
+.btn-edit:hover { background-color: var(--btn-edit-hover); }
 
-.btn-delete { background-color: #ef5350; }
-.btn-delete:hover { background-color: #e53935; }
+.btn-delete { background-color: var(--btn-delete-bg); }
+.btn-delete:hover { background-color: var(--btn-delete-hover); }
 
 /* Mensagem de nenhum serviço */
 .no-services {
   text-align: center;
   font-size: 1rem;
-  color: #888;
+  color: var(--color-text-light);
   padding: 40px;
 }
 
