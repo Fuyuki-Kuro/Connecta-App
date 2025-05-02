@@ -1,8 +1,21 @@
-/* Estilo para o body */
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
   font-family: 'Montserrat Alternates', sans-serif;
-  background-color: var(--color-bg-light);
-  color: var(--color-text-light);
+  background-color: var(--background-color);  /* Cor de fundo */
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -10,7 +23,43 @@ body {
   overflow-x: hidden;
 }
 
-/* Estilo do container (background, blur, etc.) */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(135deg, #fff0f5 0%, #ffe2eb 100%);
+  overflow: hidden;
+}
+
+.shape-top,
+.shape-bottom {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+
+.shape-top {
+  top: 0;
+  left: 0;
+  animation: floatTop 20s ease-in-out infinite;
+}
+
+.shape-bottom {
+  bottom: 0;
+  right: 0;
+  animation: floatBottom 25s ease-in-out infinite;
+}
+
+@keyframes floatTop {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(15px); }
+}
+
+@keyframes floatBottom {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
 .container {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px); /* Suporte Safari */
@@ -18,16 +67,28 @@ body {
   height: 500px;
   display: flex;
   border-radius: 40px;
-  box-shadow: 0 0 25px var(--color-shadow-light);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
   position: relative;
-  background: var(--color-card-bg-light);
-  border: 1px solid var(--color-card-border-light);
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo da parte esquerda */
+.container .bg-text {
+  font-size: 7em;
+  font-weight: 900;
+  line-height: 1em;  
+  position: absolute;
+  top: 3%;
+  left: -3.5%;
+  color: var(--primary-color);  /* Cor do texto */
+  z-index: 1;
+}
+
 .left {
   flex: 1;
-  background-color: var(--color-primary);
+  background-color: var(--primary-color);  /* Roxo */
   color: white;
   display: flex;
   position: relative;
@@ -37,10 +98,30 @@ body {
   overflow: hidden;
 }
 
-/* Estilo da parte direita */
+.left h1 {
+  font-size: 7em;
+  font-weight: 900;
+  line-height: 1em;
+  position: absolute;
+  top: 3%;
+  left: -8%;  /* Ajuste para que fique parcialmente fora */
+  color: white;
+  z-index: 1;
+}
+
+.left p {
+  margin-top: 20px;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 20px;
+  position: absolute;
+  bottom: 60px;
+  left: 50px;
+}
+
 .right {
   flex: 1;
-  background: linear-gradient(to right, #f1f1f1, #fcd9e4);
+  background: linear-gradient(to right, #f1f1f1, var(--secondary-color));  /* Rosa claro */
   padding: 40px;
   position: relative;
   border-radius: 0 40px 40px 0;  
@@ -50,7 +131,21 @@ body {
   justify-content: center;
 }
 
-/* Formulário de login */
+.right .icon {
+  position: absolute;
+  top: 6%;
+  right: 8%;
+  width: 6%;
+  border-radius: 5px;
+}
+
+.right h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--primary-color);  /* Roxo */
+  margin-bottom: 30px;
+}
+
 .right form {
   display: flex;
   flex-direction: column;
@@ -61,97 +156,223 @@ body {
 .right input[type="password"] {
   padding: 10px 15px;
   border-radius: 30px;
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--input-border-color);  /* Roxo claro */
   outline: none;
+  font-style: italic;
   font-size: 16px;
+}
+
+.checkbox-area {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: var(--primary-color);  /* Roxo */
+}
+
+.checkbox-area input {
+  margin-right: 5px;
 }
 
 .right button {
   padding: 12px;
-  background-color: var(--color-primary);
+  background-color: var(--button-background);  /* Roxo */
   border: none;
-  color: white;
+  color: var(--button-text-color);  /* Branco */
   font-weight: bold;
   border-radius: 30px;
   font-size: 16px;
   cursor: pointer;
 }
 
-/* Adicionando o modo escuro */
-body[data-theme="dark"] {
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-dark);
+.right a {
+  margin-top: 15px;
+  display: inline-block;
+  font-size: 12px;
+  color: var(--primary-color);  /* Roxo */
+  text-decoration: none;
+  text-align: right;
 }
 
-body[data-theme="dark"] .container {
-  background: var(--color-card-bg-dark);
-  border: 1px solid var(--color-card-border-dark);
-  box-shadow: 0 0 25px var(--color-shadow-dark);
+.login-logo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 900;
+  font-size: 2em;
+  position: relative;
+  margin: 0 auto 20px auto;
 }
 
-body[data-theme="dark"] .left {
-  background-color: var(--color-primary-dark);
+.login-left { 
+  color: var(--primary-color);  /* Roxo */
+  z-index: 2;
+  line-height: 1;
 }
 
-body[data-theme="dark"] .right {
-  background: linear-gradient(to right, #121212, #2c2c2c);
+.login-container {
+  position: relative;
+  margin-left: 0px;
+  width: 80px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: var(--primary-color);  /* Roxo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -15px;
+  overflow: hidden;
 }
 
-body[data-theme="dark"] .right button {
-  background-color: var(--btn-edit-bg-dark);
-  border: none;
+.login-rosa {
+  color: var(--primary-color);  /* Roxo */
+  position: absolute;
+  left: 13%;
+  top: -15%;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
 }
 
-body[data-theme="dark"] .right input[type="text"],
-body[data-theme="dark"] .right input[type="password"] {
-  background-color: #333;
-  color: #e0e0e0;
-  border: 2px solid var(--color-primary-dark);
-}
-
-/* Estilo para os botões em temas claros e escuros */
-button {
-  transition: background-color 0.3s;
-}
-
-body[data-theme="dark"] .right button:hover {
-  background-color: var(--btn-edit-hover-dark);
-}
-
-body[data-theme="light"] .right button:hover {
-  background-color: var(--btn-edit-hover-light);
-}
-
-body[data-theme="dark"] .right a {
-  color: #b3b3b3;
-}
-
-body[data-theme="light"] .right a {
-  color: #ef1368;
-}
-
-/* Definindo alternância de temas */
-button.theme-toggle {
-  background-color: #ef1368;
+.login-branco {
   color: white;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 30px;
-  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 30%;
+  z-index: 2;
 }
 
-/* Responsividade para o tema escuro */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  top: 55%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--primary-color);  /* Roxo */
+}
+
+.error-message {
+  width: 100%;
+  text-align: center;
+  color: var(--error-text-color);  /* Roxo */
+  font-weight: bold;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.checkbox-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: var(--primary-color);  /* Roxo */
+  margin-top: 5px;
+}
+
+.checkbox-area label {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 0.8em;
+  color: #444;
+  user-select: none;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-area label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);  /* Roxo */
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+.checkbox-area label::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--primary-color);  /* Roxo */
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.checkbox-area input[type="checkbox"]:checked + label::after {
+  opacity: 1;
+}
+
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
     height: auto;
   }
+
   .left {
     display: none;
   }
+
   .right {
     flex: 1;
     display: block;
     padding: 20px;
+  }
+
+  .right .icon,
+  .right h2,
+  .right .bg-text {
+    display: none;
+  }
+
+  .right .login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .right form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .bg-text {
+    display: none;
+  }
+
+  .right input[type="text"],
+  .right input[type="password"],
+  .right button {
+    width: 100%;
   }
 }
