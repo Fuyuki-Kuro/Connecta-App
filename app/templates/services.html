@@ -6,33 +6,28 @@
 </head>
 
 <div class="services-container">
-  <!-- Título da página -->
   <div class="services-header">
     <h1>Serviços Cadastrados</h1>
     <p>Veja abaixo os serviços ativos dos clientes.</p>
   </div>
 
-  <!-- Botão de adicionar (somente para Admin) -->
   {% if actions.add %}
   <div class="add-service">
     <a href="/services/create" class="add-button">+ Adicionar Serviço</a>
   </div>
   {% endif %}
 
-  <!-- Lista de serviços -->
   <div class="services-list">
-    {%print(services) %}
+    {% set encontrou_pendente = false %}
     {% for service in services %}
       {% if service.servico.status == "PENDENTE" %}
+        {% set encontrou_pendente = true %}
         <div class="service-card">
-
-          <!-- Cabeçalho do card -->
           <div class="card-header">
             <h2>{{ service.servico.nome }}</h2>
             <div class="badge">{{ service.servico.tipo | capitalize }}</div>
           </div>
 
-          <!-- Conteúdo do card -->
           <div class="card-desc">
             <p><strong>Cliente:</strong> {{ service.cliente_info.nome }}</p>
             <p><strong>Email:</strong> {{ service.cliente_info.email }}</p>
@@ -41,7 +36,6 @@
             <p><strong>Status:</strong> {{ service.servico.status | capitalize }}</p>
           </div>
 
-          <!-- Ações do card -->
           <div class="card-actions">
             {% if actions.view %}
               <a href="/services/{{ service._id }}" class="btn btn-view">Ver</a>
@@ -59,16 +53,13 @@
               <a href="/services/request" class="btn btn-request">Solicitar Novo Serviço</a>
             {% endif %}
           </div>
+        </div>
       {% endif %}
-          
-    </div>
-    {% else %}
-    <div class="no-services">
-      Nenhum serviço cadastrado.
-    </div>
     {% endfor %}
+
+    {% if not encontrou_pendente %}
+      <div class="no-services">Nenhum serviço pendente encontrado.</div>
+    {% endif %}
   </div>
-
 </div>
-
 {% endblock %}
