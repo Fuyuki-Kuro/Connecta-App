@@ -19,4 +19,5 @@ descricao: str,
     
     if not cookie:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token inválido")
+    return {"nome": nome, "tipo": tipo, "descricao": descricao}
 
