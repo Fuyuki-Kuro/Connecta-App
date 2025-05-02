@@ -146,7 +146,7 @@ services = {
     "_id": "srv" + secrets.token_hex(4),
     "cliente_info": {
             "id": "usr004",
-            "nome": "Empresa E",
+            "nome": "Empresa A",
             "email": "contato@empresaD.com",
         },
     "servico": {
