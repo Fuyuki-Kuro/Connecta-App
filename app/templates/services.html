@@ -18,44 +18,41 @@
   {% endif %}
 
   <div class="services-list">
-    {% set encontrou_pendente = false %}
-    {% for service in services %}
-      {% if service.servico.status == "PENDENTE" %}
-        {% set encontrou_pendente = true %}
-        <div class="service-card">
-          <div class="card-header">
-            <h2>{{ service.servico.nome }}</h2>
-            <div class="badge">{{ service.servico.tipo | capitalize }}</div>
-          </div>
-
-          <div class="card-desc">
-            <p><strong>Cliente:</strong> {{ service.cliente_info.nome }}</p>
-            <p><strong>Email:</strong> {{ service.cliente_info.email }}</p>
-            <p><strong>Descrição:</strong> {{ service.servico.descricao }}</p>
-            <p><strong>Data de Entrega:</strong> {{ service.servico.data_de_entrega }}</p>
-            <p><strong>Status:</strong> {{ service.servico.status | capitalize }}</p>
-          </div>
-
-          <div class="card-actions">
-            {% if actions.view %}
-              <a href="/services/{{ service._id }}" class="btn btn-view">Ver</a>
-            {% endif %}
-            {% if actions.edit %}
-              <a href="/services/{{ service._id }}/edit" class="btn btn-edit">Editar</a>
-            {% endif %}
-            {% if actions.delete %}
-              <a href="/services/{{ service._id }}/delete" class="btn btn-delete">Excluir</a>
-            {% endif %}
-            {% if actions.accept %}
-              <a href="/services/{{ service._id }}/accept" class="btn btn-accept">Aceitar Serviço</a>
-            {% endif %}
-            {% if actions.request_service %}
-              <a href="/services/request" class="btn btn-request">Solicitar Novo Serviço</a>
-            {% endif %}
-          </div>
+    {%if services %}
+      {% for service in services %}
+      <div class="service-card">
+        <div class="card-header">
+          <h2>{{ service.servico.nome }}</h2>
+          <div class="badge">{{ service.servico.tipo | capitalize }}</div>
         </div>
-      {% endif %}
-    {% endfor %}
+
+        <div class="card-desc">
+          <p><strong>Cliente:</strong> {{ service.cliente_info.nome }}</p>
+          <p><strong>Email:</strong> {{ service.cliente_info.email }}</p>
+          <p><strong>Descrição:</strong> {{ service.servico.descricao }}</p>
+          <p><strong>Data de Entrega:</strong> {{ service.servico.data_de_entrega }}</p>
+          <p><strong>Status:</strong> {{ service.servico.status | capitalize }}</p>
+        </div>
+
+        <div class="card-actions">
+          {% if actions.view %}
+            <a href="/services/{{ service._id }}" class="btn btn-view">Ver</a>
+          {% endif %}
+          {% if actions.edit %}
+            <a href="/services/{{ service._id }}/edit" class="btn btn-edit">Editar</a>
+          {% endif %}
+          {% if actions.delete %}
+            <a href="/services/{{ service._id }}/delete" class="btn btn-delete">Excluir</a>
+          {% endif %}
+          {% if actions.accept %}
+            <a href="/services/{{ service._id }}/accept" class="btn btn-accept">Aceitar Serviço</a>
+          {% endif %}
+          {% if actions.request_service %}
+            <a href="/services/request" class="btn btn-request">Solicitar Novo Serviço</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
 
     {% if not encontrou_pendente %}
       <div class="no-services">Nenhum serviço pendente encontrado.</div>

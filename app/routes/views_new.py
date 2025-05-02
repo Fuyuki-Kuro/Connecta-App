@@ -195,10 +195,12 @@ async def list_services(
         "accept": user_type == "funcionario",
         "request_service": user_type == "cliente"
     }
+
+    services_pendents = [s for s in svc.collection.find({"servico.status": "PENDENTE"})]
     services = list(svc.collection.find())
     return templates.TemplateResponse(
         "services.html",
-        {"request": request, "services": services, "actions": actions, "menu": menu_active(user_type)}
+        {"request": request, "services": services, "actions": actions, "menu": menu_active(user_type), "services": services_pendents}
     )
 
 @router.get("/services/{service_id}", response_class=HTMLResponse)
