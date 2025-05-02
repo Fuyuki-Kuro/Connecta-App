@@ -1,21 +1,20 @@
 :root {
-    /* Cores principais */
-    --color-primary: #ef1368; /* Cor de destaque, alinhada à marca */
-    --color-primary-dark: #d9005c; /* Um tom mais escuro do vermelho */
-    --color-bg: #121212; /* Cor de fundo escuro */
-    --color-text: #f2f2f2; /* Texto claro para contraste */
-    --color-text-light: #aaaaaa; /* Texto claro, mais suave */
-    --color-white: #ffffff; /* Branco */
-    --color-card-bg: rgba(40, 40, 40, 0.8); /* Fundo do card com um tom escuro mas leve */
-    --color-card-border: rgba(255, 255, 255, 0.15); /* Borda suave dos cards */
-    --color-shadow: rgba(0, 0, 0, 0.6); /* Sombra para dar profundidade */
-    --color-shadow-hover: rgba(0, 0, 0, 0.8); /* Sombra mais forte para hover */
-
-    /* Botões */
-    --btn-view-bg: #5c6bc0; /* Cor do botão 'view', combina bem com o tema escuro */
-    --btn-view-hover: #3949ab; /* Hover do botão 'view' */
-    --btn-edit-bg: #26c6da; /* Cor do botão 'edit', contraste bom com o fundo escuro */
-    --btn-edit-hover: #00acc1; /* Hover do botão 'edit' */
-    --btn-delete-bg: #ef5350; /* Cor do botão 'delete', que continua sendo vermelho, mas com um tom mais quente */
-    --btn-delete-hover: #e53935; /* Hover do botão 'delete' */
-}
+    --color-primary: #ff4f8b;            /* Rosa vibrante para destacar */
+    --color-primary-dark: #d92d6b;
+    --color-bg: #121212;                /* Fundo geral escuro */
+    --color-text: #e0e0e0;              /* Texto principal claro */
+    --color-text-light: #aaaaaa;        /* Texto secundário */
+    --color-white: #1f1f1f;             /* Fundo interno (em vez de branco puro) */
+    --color-card-bg: rgba(30, 30, 30, 0.85); /* Cartão translúcido escuro */
+    --color-card-border: rgba(255, 255, 255, 0.05); /* Borda sutil */
+    --color-shadow: rgba(0, 0, 0, 0.5);       /* Sombra mais densa */
+    --color-shadow-hover: rgba(0, 0, 0, 0.7);
+  
+    --btn-view-bg: #7986cb;             /* Azul lavanda escuro */
+    --btn-view-hover: #5c6bc0;
+    --btn-edit-bg: #4dd0e1;             /* Azul piscina suave */
+    --btn-edit-hover: #26c6da;
+    --btn-delete-bg: #ef5350;           /* Vermelho mais quente */
+    --btn-delete-hover: #e53935;
+  }
+  

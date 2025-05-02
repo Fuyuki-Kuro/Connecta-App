@@ -72,15 +72,17 @@
     const themeToggle = document.getElementById('theme-toggle');
     const themeLink = document.getElementById('theme-style');
   
-    // Verifica o tema salvo
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    themeLink.href = `/static/css/theme-${currentTheme}.css`;
+    // Verifica tema salvo ou usa 'light' como padrão
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    themeLink.href = `/static/css/theme-${savedTheme}.css`;
   
     themeToggle.addEventListener('click', () => {
-      const newTheme = themeLink.href.includes('light') ? 'dark' : 'light';
+      const currentTheme = themeLink.href.includes('light') ? 'light' : 'dark';
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  
       themeLink.href = `/static/css/theme-${newTheme}.css`;
       localStorage.setItem('theme', newTheme);
     });
-  </script>
+  </script>  
 </body>
 </html>
