@@ -9,3 +9,5 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 # Inclui rotas de páginas
 app.include_router(views.router)
+
+# Inclui rotas de API
