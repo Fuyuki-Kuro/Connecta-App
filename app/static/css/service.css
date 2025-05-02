@@ -78,9 +78,10 @@ body, html {
 
 /* Grid dos cards */
 .services-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaço entre os cards */
+  align-items: center; /* centraliza os cards se eles tiverem largura fixa */
 }
 
 /* Card estilo Glass */
