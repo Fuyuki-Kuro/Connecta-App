@@ -1,32 +1,44 @@
 :root {
     /* Cores principais */
-    --color-primary: #f20066; /* Rosa vibrante */
+    --color-primary: #f20066;
     --color-primary-dark: #d9005c;
-    --color-accent: #ffb86c; /* Laranja suave para destaques */
+    --color-primary-light: #ff4081;
     
     /* Cores de fundo */
-    --color-bg: #121212; /* Cinza escuro */
-    --color-bg-light: #1e1e1e; /* Cinza médio */
-    --color-card-bg: #2a2a2a; /* Fundo dos cartões */
-    --color-card-border: rgba(255, 255, 255, 0.1);
+    --color-bg-dark: #121212;
+    --color-bg-light: #1e1e1e;
+    --color-card-bg: #2c2c2c;
+    --color-sidebar-bg: #1f1f1f;
     
     /* Cores de texto */
-    --color-text: #e0e0e0; /* Cinza claro */
-    --color-text-light: #b0b0b0; /* Cinza mais suave */
-    --color-white: #ffffff;
+    --color-text-light: #e0e0e0;
+    --color-text-dark: #333;
     
-    /* Cores de interação */
-    --color-hover: #333333; /* Cor de fundo ao passar o mouse */
-    --color-shadow: rgba(0, 0, 0, 0.5); /* Sombra para profundidade */
-    --color-shadow-hover: rgba(0, 0, 0, 0.7); /* Sombra ao passar o mouse */
+    /* Cores de elementos interativos */
+    --color-link: #ff4081;
+    --color-link-hover: #f50057;
+    
+    /* Cores de bordas e sombras */
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-shadow: rgba(0, 0, 0, 0.5);
     
     /* Cores de botões */
     --btn-bg: var(--color-primary);
     --btn-bg-hover: var(--color-primary-dark);
-    --btn-text: var(--color-white);
-    
-    /* Cores de ícones */
-    --icon-color: var(--color-white);
-    --icon-hover: var(--color-accent);
+    --btn-text: #fff;
+  }
+  
+  [data-theme="dark"] {
+    --color-bg: var(--color-bg-dark);
+    --color-text: var(--color-text-light);
+    --color-card-bg: #2c2c2c;
+    --color-sidebar-bg: #1f1f1f;
+  }
+  
+  [data-theme="light"] {
+    --color-bg: var(--color-bg-light);
+    --color-text: var(--color-text-dark);
+    --color-card-bg: #fff;
+    --color-sidebar-bg: #f5f5f5;
   }
   
